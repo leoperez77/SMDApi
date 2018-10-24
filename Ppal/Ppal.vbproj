@@ -1,0 +1,1034 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AD4A2650-DE53-4046-9E36-DC8C6DD0E929}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SMDPpal</RootNamespace>
+    <AssemblyName>SMDPpal</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>SMDPpal.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>1</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>SMDPpal.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>1</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DiffieHellman, Version=0.0.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\SMD_FILES\BIN14\DiffieHellman.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\..\..\b99\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\b99\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.Compatibility" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Org.Mentalis.Security, Version=1.0.13.715, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\SMD_FILES\BIN14\Org.Mentalis.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="rpn">
+      <HintPath>..\..\..\b99\rpn.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Tamir.SharpSSH">
+      <HintPath>..\..\..\b99\Tamir.SharpSSH.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="Microsoft.VisualBasic.Compatibility" />
+    <Import Include="Microsoft.VisualBasic.Compatibility.VB6" />
+    <Import Include="SubSystems.RP" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Drawing.Design" />
+    <Import Include="System.Drawing.Imaging" />
+    <Import Include="System.Windows" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdvanceFiles\fEspera.Designer.vb">
+      <DependentUpon>fEspera.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdvanceFiles\fEspera.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdvanceFiles\fPregContenido.Designer.vb">
+      <DependentUpon>fPregContenido.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdvanceFiles\fPregContenido.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Busitem\fBusVeh.Designer.vb">
+      <DependentUpon>fBusVeh.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Busitem\fBusVeh.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Busitem\fVarios.Designer.vb">
+      <DependentUpon>fVarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Busitem\fVarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clases\CDigitalizacion.vb" />
+    <Compile Include="Clases\CFinanciera.vb" />
+    <Compile Include="Clases\CGrid.vb" />
+    <Compile Include="Clases\ClaseCertificados.vb" />
+    <Compile Include="Clases\ClasePrecios.vb" />
+    <Compile Include="Clases\DataGridViewPrinter.vb" />
+    <Compile Include="Clases\ExpDocFTP.vb" />
+    <Compile Include="Clases\ImprimirOrdenTaller.vb" />
+    <Compile Include="Clases\OtrasVariablesGlobales.vb" />
+    <Compile Include="AdvanceFiles\CtrlPegarArchivos.Designer.vb">
+      <DependentUpon>CtrlPegarArchivos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdvanceFiles\CtrlPegarArchivos.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\MonedaDMS.designer.vb">
+      <DependentUpon>MonedaDMS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\MonedaDMS.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\TextBoxMultilineaDMS.Designer.vb">
+      <DependentUpon>TextBoxMultilineaDMS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\TextBoxMultilineaDMS.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Destinos\ClaseDestinos.vb" />
+    <Compile Include="Destinos\fCtaDestinos.Designer.vb">
+      <DependentUpon>fCtaDestinos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Destinos\fCtaDestinos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Destinos\fDestinos.Designer.vb">
+      <DependentUpon>fDestinos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Destinos\fDestinos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Destinos\fEscogerImagen.Designer.vb">
+      <DependentUpon>fEscogerImagen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Destinos\fEscogerImagen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Destinos\fPedirDestinos.Designer.vb">
+      <DependentUpon>fPedirDestinos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Destinos\fPedirDestinos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fac_electronica\GenerarXml.vb" />
+    <Compile Include="Fac_electronica\SecureFileTransfer.vb" />
+    <Compile Include="Formas\fAccesorios.Designer.vb">
+      <DependentUpon>fAccesorios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fAccesorios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fCiudad.Designer.vb">
+      <DependentUpon>fCiudad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fCiudad.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fFind_Exp.Designer.vb">
+      <DependentUpon>fFind_Exp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fFind_Exp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fFormasPagoVentas.designer.vb">
+      <DependentUpon>fFormasPagoVentas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fFormasPagoVentas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fImageList.Designer.vb">
+      <DependentUpon>fImageList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fImageList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fInfExtUAFE.Designer.vb">
+      <DependentUpon>fInfExtUAFE.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fInfExtUAFE.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fMarcaLineaModelo.Designer.vb">
+      <DependentUpon>fMarcaLineaModelo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fMarcaLineaModelo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fVerFacturas.Designer.vb">
+      <DependentUpon>fVerFacturas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fVerFacturas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Idioma\ClaseIdioma.vb" />
+    <Compile Include="Padre\fCampito.Designer.vb">
+      <DependentUpon>fCampito.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Padre\fCampito.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Padre\fModificarCampos.Designer.vb">
+      <DependentUpon>fModificarCampos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Padre\fModificarCampos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaWEB\fWeb_Especial.Designer.vb">
+      <DependentUpon>fWeb_Especial.vb</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaWEB\fWeb_Especial.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDI\fVariasTablasChild.Designer.vb">
+      <DependentUpon>fVariasTablasChild.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MDI\fVariasTablasChild.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDI\fVariasTablasMDI.Designer.vb">
+      <DependentUpon>fVariasTablasMDI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MDI\fVariasTablasMDI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDI\MostrarMDI.vb" />
+    <Compile Include="reglasNegocio\ConfigurarReglasNegocio.vb" />
+    <Compile Include="Clases\CUnds.vb" />
+    <Compile Include="Clases\definicion_archivos.vb" />
+    <Compile Include="Clases\Desconectado.vb" />
+    <Compile Include="Clases\monto_escrito.vb" />
+    <Compile Include="Clases\NuevoLeame.vb" />
+    <Compile Include="ColumnasGrid\CCols.vb" />
+    <Compile Include="Controles\BotonActualizar.Designer.vb">
+      <DependentUpon>BotonActualizar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\BotonActualizar.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\BotonEstandar.Designer.vb">
+      <DependentUpon>BotonEstandar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\BotonEstandar.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controles\CamposAdicionales.Designer.vb">
+      <DependentUpon>CamposAdicionales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\CamposAdicionales.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\CheckListDMS.designer.vb">
+      <DependentUpon>CheckListDMS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\CheckListDMS.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\ComboDMS.Designer.vb">
+      <DependentUpon>ComboDMS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\ComboDMS.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\ComboDMSClientes.Designer.vb">
+      <DependentUpon>ComboDMSClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\ComboDMSClientes.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\CtrImprimir.Designer.vb">
+      <DependentUpon>CtrImprimir.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\CtrImprimir.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\Digitalizador.Designer.vb">
+      <DependentUpon>Digitalizador.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Digitalizador.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\LblCliente.Designer.vb">
+      <DependentUpon>LblCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\LblCliente.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Crystal\fActuRep.Designer.vb">
+      <DependentUpon>fActuRep.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Crystal\fActuRep.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crystal\fCrystal.Designer.vb">
+      <DependentUpon>fCrystal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Crystal\fCrystal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crystal\HacerImprimirDocumentos.vb" />
+    <Compile Include="Crystal\LlamadoCrystal.vb" />
+    <Compile Include="Formas\fBusCen.Designer.vb">
+      <DependentUpon>fBusCen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fBusCen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fCamposAdicionales.Designer.vb">
+      <DependentUpon>fCamposAdicionales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fCamposAdicionales.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fCerrarVentana.Designer.vb">
+      <DependentUpon>fCerrarVentana.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fCerrarVentana.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fConfigDigitalizacion.Designer.vb">
+      <DependentUpon>fConfigDigitalizacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fConfigDigitalizacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fCopiarExcel.Designer.vb">
+      <DependentUpon>fCopiarExcel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fCopiarExcel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fDebugJD.Designer.vb">
+      <DependentUpon>fDebugJD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fDebugJD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fFormaPago.designer.vb">
+      <DependentUpon>fFormaPago.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fFormaPago.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fGuardarCancelar.Designer.vb">
+      <DependentUpon>fGuardarCancelar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fGuardarCancelar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fMaestroCod_Des.Designer.vb">
+      <DependentUpon>fMaestroCod_Des.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fMaestroCod_Des.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reglasNegocio\fModifRegla.Designer.vb">
+      <DependentUpon>fModifRegla.vb</DependentUpon>
+    </Compile>
+    <Compile Include="reglasNegocio\fModifRegla.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reglasNegocio\fReglasNegocio.Designer.vb">
+      <DependentUpon>fReglasNegocio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="reglasNegocio\fReglasNegocio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fResultBuscar1.Designer.vb">
+      <DependentUpon>fResultBuscar1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fResultBuscar1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fResultBuscarTextBox.Designer.vb">
+      <DependentUpon>fResultBuscarTextBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fResultBuscarTextBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fServer.Designer.vb">
+      <DependentUpon>fServer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fServer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fSplash.Designer.vb">
+      <DependentUpon>fSplash.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fSplash.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fUsuarios.Designer.vb">
+      <DependentUpon>fUsuarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fUsuarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fWeb.Designer.vb">
+      <DependentUpon>fWeb.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fWeb.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controles\GridDMS.designer.vb">
+      <DependentUpon>GridDMS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\GridDMS.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\ListBoxDMS.Designer.vb">
+      <DependentUpon>ListBoxDMS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\ListBoxDMS.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\ManejoArchivos.Designer.vb">
+      <DependentUpon>ManejoArchivos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\ManejoArchivos.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\RicthTextDMS.Designer.vb">
+      <DependentUpon>RicthTextDMS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\RicthTextDMS.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Formas\fArchivos_Adjuntos.Designer.vb">
+      <DependentUpon>fArchivos_Adjuntos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fArchivos_Adjuntos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fAutorizacionElectronica.Designer.vb">
+      <DependentUpon>fAutorizacionElectronica.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fAutorizacionElectronica.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fBatch.Designer.vb">
+      <DependentUpon>fBatch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fBatch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusCli\fBuscarCliente.Designer.vb">
+      <DependentUpon>fBuscarCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BusCli\fBuscarCliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Busitem\fBusItems.Designer.vb">
+      <DependentUpon>fBusItems.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Busitem\fBusItems.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Busitem\fBusItems_Cargando.Designer.vb">
+      <DependentUpon>fBusItems_Cargando.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Busitem\fBusItems_Cargando.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fCapturaImagen.designer.vb">
+      <DependentUpon>fCapturaImagen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fCapturaImagen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fClave.Designer.vb">
+      <DependentUpon>fClave.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fClave.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fEnviarMail.Designer.vb">
+      <DependentUpon>fEnviarMail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fEnviarMail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fFecha.Designer.vb">
+      <DependentUpon>fFecha.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fFecha.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fFind.Designer.vb">
+      <DependentUpon>fFind.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fFind.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fFormatoImpresion.designer.vb">
+      <DependentUpon>fFormatoImpresion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fFormatoImpresion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fGraficas_Instalar.Designer.vb">
+      <DependentUpon>fGraficas_Instalar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fGraficas_Instalar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fInputBoxDMS.Designer.vb">
+      <DependentUpon>fInputBoxDMS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fInputBoxDMS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fMaestro.designer.vb">
+      <DependentUpon>fMaestro.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fMaestro.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fMensaje.Designer.vb">
+      <DependentUpon>fMensaje.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fMensaje.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fReloj.Designer.vb">
+      <DependentUpon>fReloj.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fReloj.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fResultBuscar2.Designer.vb">
+      <DependentUpon>fResultBuscar2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fResultBuscar2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fResultBuscarGrid.Designer.vb">
+      <DependentUpon>fResultBuscarGrid.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fResultBuscarGrid.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fTextBox.Designer.vb">
+      <DependentUpon>fTextBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fTextBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\fUsuarioServicio.designer.vb">
+      <DependentUpon>fUsuarioServicio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\fUsuarioServicio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GlobalesVarios.vb" />
+    <Compile Include="Modulos\MgsWinAPI.vb" />
+    <Compile Include="Modulos\Ret_Modulo.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Modulos\MySSL.vb" />
+    <Compile Include="Modulos\Ppal.vb" />
+    <Compile Include="Modulos\ModuloReglasDeNegocio.vb" />
+    <Compile Include="Modulos\Ppal_Datos.vb" />
+    <Compile Include="Modulos\StoresProcedures.vb" />
+    <Compile Include="Controles\UsuariosDMS.Designer.vb">
+      <DependentUpon>UsuariosDMS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\UsuariosDMS.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Padre\AdvanceForm.Designer.vb">
+      <DependentUpon>AdvanceForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Padre\AdvanceForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Padre\fAdvanceOpciones.Designer.vb">
+      <DependentUpon>fAdvanceOpciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Padre\fAdvanceOpciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Padre\fDatosPantallazo.Designer.vb">
+      <DependentUpon>fDatosPantallazo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Padre\fDatosPantallazo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Padre\ModuloPadre.vb" />
+    <Compile Include="VentanaWEB\VentanitaWEB.vb" />
+    <Compile Include="Web References\SMD\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AdvanceFiles\fEspera.resx">
+      <DependentUpon>fEspera.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvanceFiles\fPregContenido.resx">
+      <DependentUpon>fPregContenido.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Busitem\fBusVeh.resx">
+      <DependentUpon>fBusVeh.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Busitem\fVarios.resx">
+      <DependentUpon>fVarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\BotonActualizar.resx">
+      <DependentUpon>BotonActualizar.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\BotonEstandar.resx">
+      <DependentUpon>BotonEstandar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\CamposAdicionales.resx">
+      <DependentUpon>CamposAdicionales.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\CheckListDMS.resx">
+      <DependentUpon>CheckListDMS.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\ComboDMS.resx">
+      <DependentUpon>ComboDMS.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\ComboDMSClientes.resx">
+      <DependentUpon>ComboDMSClientes.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\CtrImprimir.resx">
+      <DependentUpon>CtrImprimir.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvanceFiles\CtrlPegarArchivos.resx">
+      <DependentUpon>CtrlPegarArchivos.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\Digitalizador.resx">
+      <DependentUpon>Digitalizador.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\LblCliente.resx">
+      <DependentUpon>LblCliente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\MonedaDMS.resx">
+      <DependentUpon>MonedaDMS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\TextBoxMultilineaDMS.resx">
+      <DependentUpon>TextBoxMultilineaDMS.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\fActuRep.resx">
+      <DependentUpon>fActuRep.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\fCrystal.resx">
+      <DependentUpon>fCrystal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Destinos\fCtaDestinos.resx">
+      <DependentUpon>fCtaDestinos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Destinos\fDestinos.resx">
+      <DependentUpon>fDestinos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Destinos\fEscogerImagen.resx">
+      <DependentUpon>fEscogerImagen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Destinos\fPedirDestinos.resx">
+      <DependentUpon>fPedirDestinos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fAccesorios.resx">
+      <DependentUpon>fAccesorios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fBusCen.resx">
+      <DependentUpon>fBusCen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fCamposAdicionales.resx">
+      <DependentUpon>fCamposAdicionales.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fCerrarVentana.resx">
+      <DependentUpon>fCerrarVentana.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fCiudad.resx">
+      <DependentUpon>fCiudad.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fConfigDigitalizacion.resx">
+      <DependentUpon>fConfigDigitalizacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fCopiarExcel.resx">
+      <DependentUpon>fCopiarExcel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fDebugJD.resx">
+      <DependentUpon>fDebugJD.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fFind_Exp.resx">
+      <DependentUpon>fFind_Exp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fFormaPago.resx">
+      <DependentUpon>fFormaPago.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fFormasPagoVentas.resx">
+      <DependentUpon>fFormasPagoVentas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fGuardarCancelar.resx">
+      <DependentUpon>fGuardarCancelar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fImageList.resx">
+      <DependentUpon>fImageList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fInfExtUAFE.resx">
+      <DependentUpon>fInfExtUAFE.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fMaestroCod_Des.resx">
+      <DependentUpon>fMaestroCod_Des.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fMarcaLineaModelo.resx">
+      <DependentUpon>fMarcaLineaModelo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fVerFacturas.resx">
+      <DependentUpon>fVerFacturas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Padre\fCampito.resx">
+      <DependentUpon>fCampito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Padre\fModificarCampos.resx">
+      <DependentUpon>fModificarCampos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaWEB\fWeb_Especial.resx">
+      <DependentUpon>fWeb_Especial.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDI\fVariasTablasChild.resx">
+      <DependentUpon>fVariasTablasChild.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDI\fVariasTablasMDI.resx">
+      <DependentUpon>fVariasTablasMDI.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reglasNegocio\fModifRegla.resx">
+      <DependentUpon>fModifRegla.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reglasNegocio\fReglasNegocio.resx">
+      <DependentUpon>fReglasNegocio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fResultBuscar1.resx">
+      <DependentUpon>fResultBuscar1.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fResultBuscarTextBox.resx">
+      <DependentUpon>fResultBuscarTextBox.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fServer.resx">
+      <DependentUpon>fServer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fSplash.resx">
+      <DependentUpon>fSplash.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fUsuarios.resx">
+      <DependentUpon>fUsuarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fWeb.resx">
+      <DependentUpon>fWeb.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\GridDMS.resx">
+      <DependentUpon>GridDMS.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\ListBoxDMS.resx">
+      <DependentUpon>ListBoxDMS.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\ManejoArchivos.resx">
+      <DependentUpon>ManejoArchivos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\RicthTextDMS.resx">
+      <DependentUpon>RicthTextDMS.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fArchivos_Adjuntos.resx">
+      <DependentUpon>fArchivos_Adjuntos.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fAutorizacionElectronica.resx">
+      <DependentUpon>fAutorizacionElectronica.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fBatch.resx">
+      <DependentUpon>fBatch.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusCli\fBuscarCliente.resx">
+      <DependentUpon>fBuscarCliente.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Busitem\fBusItems.resx">
+      <DependentUpon>fBusItems.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Busitem\fBusItems_Cargando.resx">
+      <DependentUpon>fBusItems_Cargando.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fCapturaImagen.resx">
+      <DependentUpon>fCapturaImagen.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fClave.resx">
+      <DependentUpon>fClave.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fEnviarMail.resx">
+      <DependentUpon>fEnviarMail.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fFecha.resx">
+      <DependentUpon>fFecha.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fFind.resx">
+      <DependentUpon>fFind.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fFormatoImpresion.resx">
+      <DependentUpon>fFormatoImpresion.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fGraficas_Instalar.resx">
+      <DependentUpon>fGraficas_Instalar.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fInputBoxDMS.resx">
+      <DependentUpon>fInputBoxDMS.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fMaestro.resx">
+      <DependentUpon>fMaestro.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fMensaje.resx">
+      <DependentUpon>fMensaje.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fReloj.resx">
+      <DependentUpon>fReloj.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fResultBuscar2.resx">
+      <DependentUpon>fResultBuscar2.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fResultBuscarGrid.resx">
+      <DependentUpon>fResultBuscarGrid.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fTextBox.resx">
+      <DependentUpon>fTextBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\fUsuarioServicio.resx">
+      <DependentUpon>fUsuarioServicio.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\UsuariosDMS.resx">
+      <DependentUpon>UsuariosDMS.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Padre\AdvanceForm.resx">
+      <DependentUpon>AdvanceForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Padre\fAdvanceOpciones.resx">
+      <DependentUpon>fAdvanceOpciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Padre\fDatosPantallazo.resx">
+      <DependentUpon>fDatosPantallazo.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Web References\SMD\smdws.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost/smdws/smdws.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\SMD\</RelPath>
+      <UpdateFromURL>http://localhost/smdws/smdws.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SMDPpal_SMD_Ws</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\SMD\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\SMD\smdws.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reposo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maximizada1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SMDApi.Client\SMDApi.Client.csproj">
+      <Project>{080e573b-b6eb-474a-b3d0-99b5787c2b55}</Project>
+      <Name>SMDApi.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMDApi.DTO\SMDApi.DTO.csproj">
+      <Project>{677dde26-2970-4c23-b7f2-1926d2e5e37c}</Project>
+      <Name>SMDApi.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

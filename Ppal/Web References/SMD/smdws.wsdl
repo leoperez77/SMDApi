@@ -1,0 +1,1366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="JuanDiego">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Empresa" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Clave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="JuanDiegoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="JuanDiegoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Empresa" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Clave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LoginResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatasetInf2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatasetInf2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDatasetInf2Result" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatasetInf">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatasetInfResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDatasetInfResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDataset">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatasetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDatasetResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDataset2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDataset2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDataset2Result">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerificarIP">
+        <s:complexType />
+      </s:element>
+      <s:element name="VerificarIPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VerificarIPResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Exec">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Exec2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Exec2Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="ExecSpReturnDs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Params" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MarshalByRefObject" abstract="true" />
+      <s:complexType name="DbParameter" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:MarshalByRefObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="DbType" type="tns:DbType" />
+              <s:element minOccurs="0" maxOccurs="1" default="Input" name="Direction" type="tns:ParameterDirection" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsNullable" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" default="" name="ParameterName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Precision" type="s:unsignedByte" />
+              <s:element minOccurs="1" maxOccurs="1" name="Scale" type="s:unsignedByte" />
+              <s:element minOccurs="1" maxOccurs="1" name="Size" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" default="" name="SourceColumn" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" default="false" name="SourceColumnNullMapping" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" default="Current" name="SourceVersion" type="tns:DataRowVersion" />
+              <s:element minOccurs="0" maxOccurs="1" name="Value" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="DbType">
+        <s:restriction base="s:string">
+          <s:enumeration value="AnsiString" />
+          <s:enumeration value="Binary" />
+          <s:enumeration value="Byte" />
+          <s:enumeration value="Boolean" />
+          <s:enumeration value="Currency" />
+          <s:enumeration value="Date" />
+          <s:enumeration value="DateTime" />
+          <s:enumeration value="Decimal" />
+          <s:enumeration value="Double" />
+          <s:enumeration value="Guid" />
+          <s:enumeration value="Int16" />
+          <s:enumeration value="Int32" />
+          <s:enumeration value="Int64" />
+          <s:enumeration value="Object" />
+          <s:enumeration value="SByte" />
+          <s:enumeration value="Single" />
+          <s:enumeration value="String" />
+          <s:enumeration value="Time" />
+          <s:enumeration value="UInt16" />
+          <s:enumeration value="UInt32" />
+          <s:enumeration value="UInt64" />
+          <s:enumeration value="VarNumeric" />
+          <s:enumeration value="AnsiStringFixedLength" />
+          <s:enumeration value="StringFixedLength" />
+          <s:enumeration value="Xml" />
+          <s:enumeration value="DateTime2" />
+          <s:enumeration value="DateTimeOffset" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ParameterDirection">
+        <s:restriction base="s:string">
+          <s:enumeration value="Input" />
+          <s:enumeration value="Output" />
+          <s:enumeration value="InputOutput" />
+          <s:enumeration value="ReturnValue" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="DataRowVersion">
+        <s:restriction base="s:string">
+          <s:enumeration value="Original" />
+          <s:enumeration value="Current" />
+          <s:enumeration value="Proposed" />
+          <s:enumeration value="Default" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="SqlParameter">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DbParameter">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CompareInfo" type="tns:SqlCompareOptions" />
+              <s:element minOccurs="0" maxOccurs="1" name="XmlSchemaCollectionDatabase" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="XmlSchemaCollectionOwningSchema" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="XmlSchemaCollectionName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" default="false" name="ForceColumnEncryption" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="LocaleId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="SqlDbType" type="tns:SqlDbType" />
+              <s:element minOccurs="0" maxOccurs="1" name="SqlValue" />
+              <s:element minOccurs="0" maxOccurs="1" name="UdtTypeName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TypeName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Offset" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="SqlCompareOptions">
+        <s:list>
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="None" />
+              <s:enumeration value="IgnoreCase" />
+              <s:enumeration value="IgnoreNonSpace" />
+              <s:enumeration value="IgnoreKanaType" />
+              <s:enumeration value="IgnoreWidth" />
+              <s:enumeration value="BinarySort" />
+              <s:enumeration value="BinarySort2" />
+            </s:restriction>
+          </s:simpleType>
+        </s:list>
+      </s:simpleType>
+      <s:simpleType name="SqlDbType">
+        <s:restriction base="s:string">
+          <s:enumeration value="BigInt" />
+          <s:enumeration value="Binary" />
+          <s:enumeration value="Bit" />
+          <s:enumeration value="Char" />
+          <s:enumeration value="DateTime" />
+          <s:enumeration value="Decimal" />
+          <s:enumeration value="Float" />
+          <s:enumeration value="Image" />
+          <s:enumeration value="Int" />
+          <s:enumeration value="Money" />
+          <s:enumeration value="NChar" />
+          <s:enumeration value="NText" />
+          <s:enumeration value="NVarChar" />
+          <s:enumeration value="Real" />
+          <s:enumeration value="UniqueIdentifier" />
+          <s:enumeration value="SmallDateTime" />
+          <s:enumeration value="SmallInt" />
+          <s:enumeration value="SmallMoney" />
+          <s:enumeration value="Text" />
+          <s:enumeration value="Timestamp" />
+          <s:enumeration value="TinyInt" />
+          <s:enumeration value="VarBinary" />
+          <s:enumeration value="VarChar" />
+          <s:enumeration value="Variant" />
+          <s:enumeration value="Xml" />
+          <s:enumeration value="Udt" />
+          <s:enumeration value="Structured" />
+          <s:enumeration value="Date" />
+          <s:enumeration value="Time" />
+          <s:enumeration value="DateTime2" />
+          <s:enumeration value="DateTimeOffset" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfSqlParameter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SqlParameter" nillable="true" type="tns:SqlParameter" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ExecSpReturnDsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExecSpReturnDsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDsFromSp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Params" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDsFromSpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDsFromSpResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDsFromSp2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Params" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDsFromSp2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDsFromSp2Result">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmpresa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Empresa" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmpresaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmpresaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsuariosByEmpresa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdUsuario" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Externos" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdEmpresa" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Agrupar" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="Admin" type="s:unsignedByte" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsuariosByEmpresaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUsuariosByEmpresaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStatusUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdUsuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStatusUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStatusUsuarioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodigoUsuario" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdEmpresa" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDatosUsuarioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecSp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Params" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecSpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExecSpResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecSp2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Params" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecSp2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExecSp2Result" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertImage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bytInFile" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="intToFormat" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Tabla" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertImageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConvertImageResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PutArchivoRecibido">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NombreArchivo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Archivo" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="QuePrograma" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PutArchivoRecibidoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetArchivoRecibido">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NombreArchivo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="QuePrograma" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArchivoRecibidoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetArchivoRecibidoResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelArchivoRecibido">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="QuePrograma" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DelArchivoRecibidoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AbrirSQLConsultas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Sql" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="User" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AbrirSQLConsultasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AbrirSQLConsultasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RJ45">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Par1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Par2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Par3" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RJ45Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RJ45Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PutCompra">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdEmpresa" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdUsuarioCrea" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdCompra" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdBodega" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdUsuario" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdOrdenCompra" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdTipo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdVendedor" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdFormaPago" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Dias" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="Subtotal" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="Descuento" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="Iva" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="Total" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="Moneda" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Notas" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Anulada" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="Retencion1" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="Retencion2" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="Retencion3" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="Retencion4" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="Retencion5" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="Retencion6" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="TipoReferencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroReferencia" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdContacto" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdImportacion" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Fletes" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="IvaFlete" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="PorcRetencion1" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="PorcRetencion2" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="PorcRetencion3" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="PorcRetencion4" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="PorcRetencion5" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="PorcRetencion6" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="FechaCartera" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Ajuste" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="Detalle">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PutCompraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PutCompraResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="JuanDiegoSoapIn">
+    <wsdl:part name="parameters" element="tns:JuanDiego" />
+  </wsdl:message>
+  <wsdl:message name="JuanDiegoSoapOut">
+    <wsdl:part name="parameters" element="tns:JuanDiegoResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatasetInf2SoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatasetInf2" />
+  </wsdl:message>
+  <wsdl:message name="GetDatasetInf2SoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatasetInf2Response" />
+  </wsdl:message>
+  <wsdl:message name="GetDatasetInfSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatasetInf" />
+  </wsdl:message>
+  <wsdl:message name="GetDatasetInfSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatasetInfResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatasetSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDataset" />
+  </wsdl:message>
+  <wsdl:message name="GetDatasetSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatasetResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDataset2SoapIn">
+    <wsdl:part name="parameters" element="tns:GetDataset2" />
+  </wsdl:message>
+  <wsdl:message name="GetDataset2SoapOut">
+    <wsdl:part name="parameters" element="tns:GetDataset2Response" />
+  </wsdl:message>
+  <wsdl:message name="VerificarIPSoapIn">
+    <wsdl:part name="parameters" element="tns:VerificarIP" />
+  </wsdl:message>
+  <wsdl:message name="VerificarIPSoapOut">
+    <wsdl:part name="parameters" element="tns:VerificarIPResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExecSoapIn">
+    <wsdl:part name="parameters" element="tns:Exec" />
+  </wsdl:message>
+  <wsdl:message name="ExecSoapOut">
+    <wsdl:part name="parameters" element="tns:ExecResponse" />
+  </wsdl:message>
+  <wsdl:message name="Exec2SoapIn">
+    <wsdl:part name="parameters" element="tns:Exec2" />
+  </wsdl:message>
+  <wsdl:message name="Exec2SoapOut">
+    <wsdl:part name="parameters" element="tns:Exec2Response" />
+  </wsdl:message>
+  <wsdl:message name="ExecSpReturnDsSoapIn">
+    <wsdl:part name="parameters" element="tns:ExecSpReturnDs" />
+  </wsdl:message>
+  <wsdl:message name="ExecSpReturnDsSoapOut">
+    <wsdl:part name="parameters" element="tns:ExecSpReturnDsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDsFromSpSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDsFromSp" />
+  </wsdl:message>
+  <wsdl:message name="GetDsFromSpSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDsFromSpResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDsFromSp2SoapIn">
+    <wsdl:part name="parameters" element="tns:GetDsFromSp2" />
+  </wsdl:message>
+  <wsdl:message name="GetDsFromSp2SoapOut">
+    <wsdl:part name="parameters" element="tns:GetDsFromSp2Response" />
+  </wsdl:message>
+  <wsdl:message name="GetEmpresaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="GetEmpresaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUsuariosByEmpresaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUsuariosByEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="GetUsuariosByEmpresaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUsuariosByEmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStatusUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStatusUsuario" />
+  </wsdl:message>
+  <wsdl:message name="GetStatusUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStatusUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatosUsuario" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatosUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExecSpSoapIn">
+    <wsdl:part name="parameters" element="tns:ExecSp" />
+  </wsdl:message>
+  <wsdl:message name="ExecSpSoapOut">
+    <wsdl:part name="parameters" element="tns:ExecSpResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExecSp2SoapIn">
+    <wsdl:part name="parameters" element="tns:ExecSp2" />
+  </wsdl:message>
+  <wsdl:message name="ExecSp2SoapOut">
+    <wsdl:part name="parameters" element="tns:ExecSp2Response" />
+  </wsdl:message>
+  <wsdl:message name="ConvertImageSoapIn">
+    <wsdl:part name="parameters" element="tns:ConvertImage" />
+  </wsdl:message>
+  <wsdl:message name="ConvertImageSoapOut">
+    <wsdl:part name="parameters" element="tns:ConvertImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="PutArchivoRecibidoSoapIn">
+    <wsdl:part name="parameters" element="tns:PutArchivoRecibido" />
+  </wsdl:message>
+  <wsdl:message name="PutArchivoRecibidoSoapOut">
+    <wsdl:part name="parameters" element="tns:PutArchivoRecibidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetArchivoRecibidoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetArchivoRecibido" />
+  </wsdl:message>
+  <wsdl:message name="GetArchivoRecibidoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetArchivoRecibidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DelArchivoRecibidoSoapIn">
+    <wsdl:part name="parameters" element="tns:DelArchivoRecibido" />
+  </wsdl:message>
+  <wsdl:message name="DelArchivoRecibidoSoapOut">
+    <wsdl:part name="parameters" element="tns:DelArchivoRecibidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="AbrirSQLConsultasSoapIn">
+    <wsdl:part name="parameters" element="tns:AbrirSQLConsultas" />
+  </wsdl:message>
+  <wsdl:message name="AbrirSQLConsultasSoapOut">
+    <wsdl:part name="parameters" element="tns:AbrirSQLConsultasResponse" />
+  </wsdl:message>
+  <wsdl:message name="RJ45SoapIn">
+    <wsdl:part name="parameters" element="tns:RJ45" />
+  </wsdl:message>
+  <wsdl:message name="RJ45SoapOut">
+    <wsdl:part name="parameters" element="tns:RJ45Response" />
+  </wsdl:message>
+  <wsdl:message name="PutCompraSoapIn">
+    <wsdl:part name="parameters" element="tns:PutCompra" />
+  </wsdl:message>
+  <wsdl:message name="PutCompraSoapOut">
+    <wsdl:part name="parameters" element="tns:PutCompraResponse" />
+  </wsdl:message>
+  <wsdl:portType name="smdwsSoap">
+    <wsdl:operation name="JuanDiego">
+      <wsdl:input message="tns:JuanDiegoSoapIn" />
+      <wsdl:output message="tns:JuanDiegoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatasetInf2">
+      <wsdl:input message="tns:GetDatasetInf2SoapIn" />
+      <wsdl:output message="tns:GetDatasetInf2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatasetInf">
+      <wsdl:input message="tns:GetDatasetInfSoapIn" />
+      <wsdl:output message="tns:GetDatasetInfSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataset">
+      <wsdl:input message="tns:GetDatasetSoapIn" />
+      <wsdl:output message="tns:GetDatasetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataset2">
+      <wsdl:input message="tns:GetDataset2SoapIn" />
+      <wsdl:output message="tns:GetDataset2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerificarIP">
+      <wsdl:input message="tns:VerificarIPSoapIn" />
+      <wsdl:output message="tns:VerificarIPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Exec">
+      <wsdl:input message="tns:ExecSoapIn" />
+      <wsdl:output message="tns:ExecSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Exec2">
+      <wsdl:input message="tns:Exec2SoapIn" />
+      <wsdl:output message="tns:Exec2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecSpReturnDs">
+      <wsdl:input message="tns:ExecSpReturnDsSoapIn" />
+      <wsdl:output message="tns:ExecSpReturnDsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDsFromSp">
+      <wsdl:input message="tns:GetDsFromSpSoapIn" />
+      <wsdl:output message="tns:GetDsFromSpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDsFromSp2">
+      <wsdl:input message="tns:GetDsFromSp2SoapIn" />
+      <wsdl:output message="tns:GetDsFromSp2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmpresa">
+      <wsdl:input message="tns:GetEmpresaSoapIn" />
+      <wsdl:output message="tns:GetEmpresaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsuariosByEmpresa">
+      <wsdl:input message="tns:GetUsuariosByEmpresaSoapIn" />
+      <wsdl:output message="tns:GetUsuariosByEmpresaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatusUsuario">
+      <wsdl:input message="tns:GetStatusUsuarioSoapIn" />
+      <wsdl:output message="tns:GetStatusUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosUsuario">
+      <wsdl:input message="tns:GetDatosUsuarioSoapIn" />
+      <wsdl:output message="tns:GetDatosUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecSp">
+      <wsdl:input message="tns:ExecSpSoapIn" />
+      <wsdl:output message="tns:ExecSpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecSp2">
+      <wsdl:input message="tns:ExecSp2SoapIn" />
+      <wsdl:output message="tns:ExecSp2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConvertImage">
+      <wsdl:input message="tns:ConvertImageSoapIn" />
+      <wsdl:output message="tns:ConvertImageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PutArchivoRecibido">
+      <wsdl:input message="tns:PutArchivoRecibidoSoapIn" />
+      <wsdl:output message="tns:PutArchivoRecibidoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArchivoRecibido">
+      <wsdl:input message="tns:GetArchivoRecibidoSoapIn" />
+      <wsdl:output message="tns:GetArchivoRecibidoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DelArchivoRecibido">
+      <wsdl:input message="tns:DelArchivoRecibidoSoapIn" />
+      <wsdl:output message="tns:DelArchivoRecibidoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AbrirSQLConsultas">
+      <wsdl:input message="tns:AbrirSQLConsultasSoapIn" />
+      <wsdl:output message="tns:AbrirSQLConsultasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RJ45">
+      <wsdl:input message="tns:RJ45SoapIn" />
+      <wsdl:output message="tns:RJ45SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PutCompra">
+      <wsdl:input message="tns:PutCompraSoapIn" />
+      <wsdl:output message="tns:PutCompraSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="smdwsSoap" type="tns:smdwsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="JuanDiego">
+      <soap:operation soapAction="http://tempuri.org/JuanDiego" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatasetInf2">
+      <soap:operation soapAction="http://tempuri.org/GetDatasetInf2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatasetInf">
+      <soap:operation soapAction="http://tempuri.org/GetDatasetInf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataset">
+      <soap:operation soapAction="http://tempuri.org/GetDataset" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataset2">
+      <soap:operation soapAction="http://tempuri.org/GetDataset2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificarIP">
+      <soap:operation soapAction="http://tempuri.org/VerificarIP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Exec">
+      <soap:operation soapAction="http://tempuri.org/Exec" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Exec2">
+      <soap:operation soapAction="http://tempuri.org/Exec2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecSpReturnDs">
+      <soap:operation soapAction="http://tempuri.org/ExecSpReturnDs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDsFromSp">
+      <soap:operation soapAction="http://tempuri.org/GetDsFromSp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDsFromSp2">
+      <soap:operation soapAction="http://tempuri.org/GetDsFromSp2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmpresa">
+      <soap:operation soapAction="http://tempuri.org/GetEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsuariosByEmpresa">
+      <soap:operation soapAction="http://tempuri.org/GetUsuariosByEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatusUsuario">
+      <soap:operation soapAction="http://tempuri.org/GetStatusUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosUsuario">
+      <soap:operation soapAction="http://tempuri.org/GetDatosUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecSp">
+      <soap:operation soapAction="http://tempuri.org/ExecSp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecSp2">
+      <soap:operation soapAction="http://tempuri.org/ExecSp2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertImage">
+      <soap:operation soapAction="http://tempuri.org/ConvertImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutArchivoRecibido">
+      <soap:operation soapAction="http://tempuri.org/PutArchivoRecibido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArchivoRecibido">
+      <soap:operation soapAction="http://tempuri.org/GetArchivoRecibido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelArchivoRecibido">
+      <soap:operation soapAction="http://tempuri.org/DelArchivoRecibido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AbrirSQLConsultas">
+      <soap:operation soapAction="http://tempuri.org/AbrirSQLConsultas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RJ45">
+      <soap:operation soapAction="http://tempuri.org/RJ45" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutCompra">
+      <soap:operation soapAction="http://tempuri.org/PutCompra" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="smdwsSoap12" type="tns:smdwsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="JuanDiego">
+      <soap12:operation soapAction="http://tempuri.org/JuanDiego" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatasetInf2">
+      <soap12:operation soapAction="http://tempuri.org/GetDatasetInf2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatasetInf">
+      <soap12:operation soapAction="http://tempuri.org/GetDatasetInf" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataset">
+      <soap12:operation soapAction="http://tempuri.org/GetDataset" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataset2">
+      <soap12:operation soapAction="http://tempuri.org/GetDataset2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificarIP">
+      <soap12:operation soapAction="http://tempuri.org/VerificarIP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Exec">
+      <soap12:operation soapAction="http://tempuri.org/Exec" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Exec2">
+      <soap12:operation soapAction="http://tempuri.org/Exec2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecSpReturnDs">
+      <soap12:operation soapAction="http://tempuri.org/ExecSpReturnDs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDsFromSp">
+      <soap12:operation soapAction="http://tempuri.org/GetDsFromSp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDsFromSp2">
+      <soap12:operation soapAction="http://tempuri.org/GetDsFromSp2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmpresa">
+      <soap12:operation soapAction="http://tempuri.org/GetEmpresa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsuariosByEmpresa">
+      <soap12:operation soapAction="http://tempuri.org/GetUsuariosByEmpresa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatusUsuario">
+      <soap12:operation soapAction="http://tempuri.org/GetStatusUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosUsuario">
+      <soap12:operation soapAction="http://tempuri.org/GetDatosUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecSp">
+      <soap12:operation soapAction="http://tempuri.org/ExecSp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecSp2">
+      <soap12:operation soapAction="http://tempuri.org/ExecSp2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertImage">
+      <soap12:operation soapAction="http://tempuri.org/ConvertImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutArchivoRecibido">
+      <soap12:operation soapAction="http://tempuri.org/PutArchivoRecibido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArchivoRecibido">
+      <soap12:operation soapAction="http://tempuri.org/GetArchivoRecibido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DelArchivoRecibido">
+      <soap12:operation soapAction="http://tempuri.org/DelArchivoRecibido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AbrirSQLConsultas">
+      <soap12:operation soapAction="http://tempuri.org/AbrirSQLConsultas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RJ45">
+      <soap12:operation soapAction="http://tempuri.org/RJ45" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutCompra">
+      <soap12:operation soapAction="http://tempuri.org/PutCompra" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="smdws">
+    <wsdl:port name="smdwsSoap" binding="tns:smdwsSoap">
+      <soap:address location="http://localhost/smdws/smdws.asmx" />
+    </wsdl:port>
+    <wsdl:port name="smdwsSoap12" binding="tns:smdwsSoap12">
+      <soap12:address location="http://localhost/smdws/smdws.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
