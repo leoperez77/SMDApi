@@ -3,6 +3,7 @@ using SMDApi.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -106,6 +107,49 @@ namespace SMDApi.Client
                 else
                     return obj;
 
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public static DataSet PostSyncX<T>(string servicePrefix, string controller, T model)
+        {
+            Response obj = new Response();
+            try
+            {
+                //Params.UrlService = @"http://localhost/trapi/";
+
+                //var url = "http://myserver/method";
+                //var parameters = new Dictionary<string, string> { { "param1", "1" }, { "param2", "2" } };
+                //var encodedContent = new FormUrlEncodedContent(parameters);
+
+
+                HttpClient client = new HttpClient
+                {
+                    BaseAddress = new Uri(Params.UrlApi)
+                };
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage res = client.PostAsJsonAsync(servicePrefix + "/" + controller + "?type=xml", model).Result;
+
+                if (res.IsSuccessStatusCode)
+                {
+                    var content = res.Content.ReadAsStringAsync().Result;
+                    //var content =  res.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    DataSet dataSet = new DataSet();
+                    var sr = new StringReader(content);
+                    dataSet.ReadXml(sr);
+                    sr.Close();
+
+                    return dataSet;
+                    //obj.Result = content;
+                    //obj.
+                }
+                else
+                    throw new Exception("Error al traer dataset en xml");
 
             }
             catch (Exception ex)

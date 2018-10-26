@@ -40,6 +40,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "043 - Importaciones", "..\F
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "VbApiTest", "VbApiTest\VbApiTest.vbproj", "{7BDA4A4D-D4A2-476A-895A-80E08B9C9356}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "019 - Inventarios", "..\Fuentes vs2099\dms.net\Inventarios\019 - Inventarios.vbproj", "{4972BC8F-DBE1-412C-951F-ED3CCF80A0A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -119,6 +121,14 @@ Global
 		{7BDA4A4D-D4A2-476A-895A-80E08B9C9356}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7BDA4A4D-D4A2-476A-895A-80E08B9C9356}.Release|x86.ActiveCfg = Release|Any CPU
 		{7BDA4A4D-D4A2-476A-895A-80E08B9C9356}.Release|x86.Build.0 = Release|Any CPU
+		{4972BC8F-DBE1-412C-951F-ED3CCF80A0A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4972BC8F-DBE1-412C-951F-ED3CCF80A0A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4972BC8F-DBE1-412C-951F-ED3CCF80A0A8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4972BC8F-DBE1-412C-951F-ED3CCF80A0A8}.Debug|x86.Build.0 = Debug|Any CPU
+		{4972BC8F-DBE1-412C-951F-ED3CCF80A0A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4972BC8F-DBE1-412C-951F-ED3CCF80A0A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4972BC8F-DBE1-412C-951F-ED3CCF80A0A8}.Release|x86.ActiveCfg = Release|Any CPU
+		{4972BC8F-DBE1-412C-951F-ED3CCF80A0A8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

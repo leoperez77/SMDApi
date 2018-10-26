@@ -49,11 +49,17 @@ namespace SMDWebApi.Clases
                     {
                         if (j < table.Columns.Count - 1)
                         {
-                            JSONString.Append($@" ""{table.Columns[j].ColumnName.ToString()}"" :  {JsonConvert.ToString(table.Rows[i][j].ToString())} ," );
+                            if(table.Rows[i].IsNull(j))
+                                JSONString.Append($@" ""{table.Columns[j].ColumnName.ToString()}"" : null ,");
+                            else
+                                JSONString.Append($@" ""{table.Columns[j].ColumnName.ToString()}"" : {JsonConvert.ToString(table.Rows[i][j].ToString())} ," );
                         }
                         else if (j == table.Columns.Count - 1)
                         {
-                            JSONString.Append($@" ""{table.Columns[j].ColumnName.ToString()}"" : {JsonConvert.ToString(table.Rows[i][j].ToString())} ");
+                            if (table.Rows[i].IsNull(j))
+                                JSONString.Append($@" ""{table.Columns[j].ColumnName.ToString()}"" : null ");
+                            else
+                                JSONString.Append($@" ""{table.Columns[j].ColumnName.ToString()}"" : {JsonConvert.ToString(table.Rows[i][j].ToString())} ");
                         }
                     }
                     if (i == table.Rows.Count - 1)

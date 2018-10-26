@@ -93,6 +93,7 @@
     <Compile Include="Clases\Data.cs" />
     <Compile Include="Clases\DataSetSerializer.cs" />
     <Compile Include="Controllers\DsController.cs" />
+    <Compile Include="Controllers\DsxController.cs" />
     <Compile Include="Controllers\ExController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">

@@ -13,7 +13,7 @@ namespace SMDWebApi
         {
             
             GlobalConfiguration.Configure(WebApiConfig.Register);
-           
+            GlobalConfiguration.Configuration.Formatters.XmlFormatter.UseXmlSerializer = true;
         }
     }
 }

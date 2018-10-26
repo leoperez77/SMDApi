@@ -20,6 +20,9 @@
 ' Version: 595, 7-nov.-2017 15:15
 ' Version: 595, 7-nov.-2017 11:14
 '♥ versión: 586, 6-oct.-2017 07:11
+
+
+
 Public Class fBusItems
     Public IdBod As Integer = 0
     Dim Mayores As Double
@@ -43,6 +46,7 @@ Public Class fBusItems
     Dim PrecioMasIva As Boolean = False
     Dim CuantosHay As Integer
     Dim BusquedaNueva As Boolean = False
+
 
 
     Private Function DtItem() As DataTable

@@ -13,13 +13,10 @@ Imports System.Web
 Imports System
 Imports System.Diagnostics
 Imports System.IO
-
-
-'Version: 68X, 2X-oct.-2018 XX:XX
-'Librerías requeridas para el acceso al web Api
 Imports Newtonsoft.Json
 Imports SMDApi.Client
 Imports System.Threading.Tasks
+
 Public Module Ppal_Datos
     'Dim ConexionDirecta As Boolean = True 'debe ser asi: true
     Public IPAdv As String = "190.85.68.202"
@@ -36,43 +33,8 @@ Public Module Ppal_Datos
     Public DsUsoEspecial As DataSet
     Public TiempoIniciEspecial As DateTime
 
-#Region "Variables acceso WebApi"
-
-    Public PuertoPruebas As String = "62914" 'En modo local el api corre en un puerto específico
+    Public PuertoPruebas As String = "62914"
     Public urlApi As String = ""
-    Public UsarApi As Boolean = True   'Se usará el servicio web existente por defecto
-    Public DevolverXml As Boolean = True 'Por defecto se devolverá JSON
-#End Region
-
-#Region "Funciones WebApi"
-
-    'Si la url del api no se ha asignado la asigna basándose en la dirección del servicio web
-    Private Sub AsignarUrlApi()
-        If (urlApi = "") Then
-            Dim url = DemeNodo()
-            Dim host = ""
-            If (url <> "") Then
-                Dim cuantos As Int16 = 0
-                For index = 0 To url.Length
-                    If url(index) = "/" Then
-                        cuantos = cuantos + 1
-                        If (cuantos = 3) Then
-                            host = url.Substring(0, index)
-                            If (PuertoPruebas <> "") Then
-                                host = host + ":" + PuertoPruebas
-                            End If
-                            Exit For
-                        End If
-                    End If
-                Next
-            End If
-            urlApi = host
-            Params.UrlApi = urlApi
-        End If
-    End Sub
-
-#End Region
-
 
     Public Function Convierta_IP(MarcaExt As String)
         'pru jd 2013-12-04
@@ -103,7 +65,6 @@ Public Module Ppal_Datos
 
 
     End Function
-    'Cambiado a función que devuelve un string
     Public Function DemeNodo() As String
         Dim CualIP As String
         If EntroWS Then Exit Function
@@ -309,10 +270,6 @@ Public Module Ppal_Datos
 
     End Sub
 
-
-#Region "Virtualización"
-
-
     '***************************************************************************************************************************************************
     '***************************************************************************************************************************************************
     '**********************************************  VIRTUALIZACION XML  *******************************************************************************
@@ -480,8 +437,6 @@ Public Module Ppal_Datos
     '**********************************************  FIN VIRTUALIZACION XML  ***************************************************************************
     '***************************************************************************************************************************************************
     '***************************************************************************************************************************************************
-#End Region
-
     Private Sub Cargar_IPS()
         'lo quito porque desde fuente saca error
         'lo vuelvo a poner 28-oct-2016
@@ -756,6 +711,7 @@ Repita_IP:
     End Function
 
 
+
     Public Sub Abrir_Nodo_1(ByRef Dt As DataTable, ByVal Sql As String)
         'If MarcaExterna <> "" Then
         '    Abrir(Dt, Sql)
@@ -779,6 +735,9 @@ Repita_IP:
 
     End Sub
     Public Sub Abrir_Nodo_1(ByRef Ds As DataSet, ByVal Sql As String)
+
+
+
         'truco para limpiar caracteres que dan error de HTTP. Descubierto el 17-feb-2015
         Sql = Sql.Replace(Chr(31), "")
 
@@ -846,6 +805,8 @@ Repita_IP:
 
 
         DebugJD("=ws=> " & Sql)
+
+
         Ds = Ws2.GetDataset(Sql, CodAplica2)
 
         Medir_Consumo(Ds)
@@ -895,26 +856,17 @@ Repita_IP:
         If EstoyDesconectadoNuevo Then
             Ds = Desconectado.GetDatasetCE(Sql)
         Else
-            If UsarApi Then
-                AsignarUrlApi()
+            'DemeNodo()
+            'Ds = Ws.GetDataset2(Haga1(True, Sql), Haga1(True, CodAplica2))
 
-                Dim Command = New SMDApi.DTO.SqlCommand() With {
-                    .Sql = Sql,
-                    .Type = 1
-                }
-                If Not DevolverXml Then
-                    Dim res = ApiService.PostSync(Of SMDApi.DTO.SqlCommand)("api", "ds", Command)
-                    Ds = ApiService.DeserializeDs(res.Result.ToString())
-                Else
-                    Ds = ApiService.PostSyncX(Of SMDApi.DTO.SqlCommand)("api", "dsx", Command)
-                End If
-            Else
-                DemeNodo()
-                Ds = Ws.GetDataset2(Haga1(True, Sql), Haga1(True, CodAplica2))
-            End If
+            AsignarUrlApi()
 
-
-
+            Dim Command = New SMDApi.DTO.SqlCommand() With {
+            .Sql = Sql,
+            .Type = 1
+        }
+            Dim res = ApiService.PostSync(Of SMDApi.DTO.SqlCommand)("api", "ds", Command)
+            Ds = ApiService.DeserializeDs(res.Result.ToString())
         End If
 
 
@@ -931,6 +883,30 @@ Repita_IP:
         End If
 
 
+    End Sub
+
+    Private Sub AsignarUrlApi()
+        If (urlApi = "") Then
+            Dim url = DemeNodo()
+            Dim host = ""
+            If (url <> "") Then
+                Dim cuantos As Int16 = 0
+                For index = 0 To url.Length
+                    If url(index) = "/" Then
+                        cuantos = cuantos + 1
+                        If (cuantos = 3) Then
+                            host = url.Substring(0, index)
+                            If (PuertoPruebas <> "") Then
+                                host = host + ":" + PuertoPruebas
+                            End If
+                            Exit For
+                        End If
+                    End If
+                Next
+            End If
+            urlApi = host
+            Params.UrlApi = urlApi
+        End If
     End Sub
     'Private Function HagaDirecto(ByRef Dt As DataSet, ByVal Sql As String, Optional EsEjecutar As Boolean = False) As Boolean
     '    If Usuario = 0 Then
@@ -1052,28 +1028,40 @@ Repita_IP:
             Sql = Mid(Sql, 3)
         End If
 
-        If UsarApi Then
-            AsignarUrlApi()
 
-            Dim Command = New SMDApi.DTO.SqlCommand() With {
-                    .Sql = Sql,
-                    .Type = 1
-                }
-            If Not DevolverXml Then
-                Dim res = ApiService.PostSync(Of SMDApi.DTO.SqlCommand)("api", "ds", Command)
-                Ds = ApiService.DeserializeDs(res.Result.ToString())
-            Else
-                Ds = ApiService.PostSyncX(Of SMDApi.DTO.SqlCommand)("api", "dsx", Command)
-            End If
-        Else
-            DemeNodo()
-            Ds = Ws.GetDataset2(Haga1(True, Sql), Haga1(True, CodAplica2))
-        End If
+        AsignarUrlApi()
 
 
-        Medir_Consumo(Ds)
+        Dim Command = New SMDApi.DTO.SqlCommand() With {
+        .Sql = Sql,
+        .Type = 1
+    }
+        Dim res = ApiService.PostSync(Of SMDApi.DTO.SqlCommand)("api", "ds", Command)
+        Ds = ApiService.DeserializeDs(res.Result.ToString())
+
 
     End Sub
+
+    'Private dx As DataSet
+    'Private Sub CargarDs()
+    '    Dim Command = New SMDApi.DTO.SqlCommand() With {
+    '    .Sql = sqlTemp,
+    '    .Type = 1
+    '}
+    '    Dim res = ApiService.Post(Of SMDApi.DTO.SqlCommand)("api", "ds", Command).Result
+    '    dx = JsonConvert.DeserializeObject(Of DataSet)(res.Result.ToString())
+
+    'End Sub
+
+    'Private Async Function CargarDsi() As Task
+    '    Dim Command = New SMDApi.DTO.SqlCommand() With {
+    '    .Sql = sqlTemp,
+    '    .Type = 1
+    '}
+    '    Dim res = Await ApiService.Post(Of SMDApi.DTO.SqlCommand)("api", "ds", Command)
+    '    dx = JsonConvert.DeserializeObject(Of DataSet)(res.Result.ToString())
+
+    'End Function
 
     Public Function NoEstoyEnLinea() As Boolean
         If EstoyDesconectadoNuevo Then
@@ -1105,53 +1093,42 @@ Repita_IP:
             'End If
             Ds = Desconectado.GetDsFromSp2(NombreSP, New String() {"", p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20})
         Else
+            'DemeNodo()
+            'DebugJD("=ws=> " & NombreSP)
+            'Ds = Ws.GetDsFromSp2(Haga1(True, NombreSP), Haga1(True, CodAplica2), New String() {"", p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20})
 
+            AsignarUrlApi()
 
-            If UsarApi Then
-                AsignarUrlApi()
+            Dim params = New String() {"", p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20}
+            Dim mSql = NombreSP & " "
 
-                Dim params = New String() {"", p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20}
-                Dim mSql = NombreSP & " "
+            Dim Cuantos As Integer
 
-                Dim Cuantos As Integer
-
-                For i As Integer = 1 To 20
-                    If params(i) <> "" Then
-                        Cuantos = Cuantos + 1
-                    End If
-                Next
-
-                For j As Integer = 1 To Cuantos
-                    mSql = mSql & $"'{params(j)}',"
-                Next
-
-                If (mSql.Substring(mSql.Length - 1) = ",") Then
-                    mSql = mSql.Substring(0, mSql.Length - 1)
+            For i As Integer = 1 To 20
+                If params(i) <> "" Then
+                    Cuantos = Cuantos + 1
                 End If
+            Next
 
-                Dim Command = New SMDApi.DTO.SqlCommand() With {
-                    .Sql = SQL,
-                    .Type = 1
-                }
-                If Not DevolverXml Then
-                    Dim res = ApiService.PostSync(Of SMDApi.DTO.SqlCommand)("api", "ds", Command)
-                    Ds = ApiService.DeserializeDs(res.Result.ToString())
-                Else
-                    Ds = ApiService.PostSyncX(Of SMDApi.DTO.SqlCommand)("api", "dsx", Command)
-                End If
-            Else
-                DemeNodo()
-                DebugJD("=ws=> " & NombreSP)
-                Ds = Ws.GetDsFromSp2(Haga1(True, NombreSP), Haga1(True, CodAplica2), New String() {"", p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20})
+            For j As Integer = 1 To Cuantos
+                mSql = mSql & $"'{params(j)}',"
+            Next
+
+            If (mSql.Substring(mSql.Length - 1) = ",") Then
+                mSql = mSql.Substring(0, mSql.Length - 1)
             End If
 
-
-
+            Dim Command = New SMDApi.DTO.SqlCommand() With {
+                .Sql = mSql,
+                .Type = 1
+            }
+                Dim res = ApiService.PostSync(Of SMDApi.DTO.SqlCommand)("api", "ds", Command)
+            Ds = ApiService.DeserializeDs(res.Result.ToString())
         End If
 
 
 
-        Medir_Consumo(Ds)
+            Medir_Consumo(Ds)
 
         If Ds.Tables.Count = 0 Then
             Dt = Nothing
@@ -1185,23 +1162,21 @@ Repita_IP:
         If EstoyDesconectadoNuevo Then
             Desconectado.GetDatasetCE(TextoEjecutar)
         Else
-            If UsarApi Then
-                AsignarUrlApi()
+            'DemeNodo()
+            'Ws.Exec2(Haga1(True, TextoEjecutar), Haga1(True, CodAplica2))
 
-                Dim Command = New SMDApi.DTO.SqlCommand() With {
-                .Sql = TextoEjecutar,
-                .Type = 1
-                }
-                Dim res = ApiService.PostSync(Of SMDApi.DTO.SqlCommand)("api", "ex", Command)
-            Else
-                DemeNodo()
-                Ws.Exec2(Haga1(True, TextoEjecutar), Haga1(True, CodAplica2))
-            End If
+            AsignarUrlApi()
 
+            Dim Command = New SMDApi.DTO.SqlCommand() With {
+            .Sql = TextoEjecutar,
+            .Type = 1
+            }
+            Dim res = ApiService.PostSync(Of SMDApi.DTO.SqlCommand)("api", "ex", Command)
+            'Ds = JsonConvert.DeserializeObject(Of DataSet)(res.Result.ToString())
         End If
 
 
-            If SiMedirConsumo Then Grabar_Consumo(Len(TextoEjecutar))
+        If SiMedirConsumo Then Grabar_Consumo(Len(TextoEjecutar))
 
 
     End Sub
@@ -1237,7 +1212,7 @@ Repita_IP:
         p20 = ConviertaWS(p20)
 
 
-
+        'DemeNodo()
 
         'truco para limpiar caracteres que dan error de HTTP. Descubierto el 17-feb-2015
         NombreStoredProc = NombreStoredProc.Replace(Chr(31), "")
@@ -1246,38 +1221,7 @@ Repita_IP:
         If EstoyDesconectadoNuevo Then
             Desconectado.GetDsFromSp2(NombreStoredProc, New String() {"", p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20})
         Else
-            If UsarApi Then
-                AsignarUrlApi()
-
-                Dim params = New String() {"", p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20}
-                Dim mSql = NombreStoredProc & " "
-
-                Dim Cuantos As Integer
-
-                For i As Integer = 1 To 20
-                    If params(i) <> "" Then
-                        Cuantos = Cuantos + 1
-                    End If
-                Next
-
-                For j As Integer = 1 To Cuantos
-                    mSql = mSql & $"'{params(j)}',"
-                Next
-
-                If (mSql.Substring(mSql.Length - 1) = ",") Then
-                    mSql = mSql.Substring(0, mSql.Length - 1)
-                End If
-
-                Dim Command = New SMDApi.DTO.SqlCommand() With {
-                    .Sql = mSql,
-                    .Type = 1
-                }
-
-                Dim res = ApiService.PostSync(Of SMDApi.DTO.SqlCommand)("api", "ex", Command)
-            Else
-                DemeNodo()
-                Ws.ExecSp2(Haga1(True, NombreStoredProc), Haga1(True, CodAplica2), New String() {"", p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20})
-            End If
+            Ws.ExecSp2(Haga1(True, NombreStoredProc), Haga1(True, CodAplica2), New String() {"", p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20})
         End If
 
 
