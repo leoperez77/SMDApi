@@ -1373,7 +1373,7 @@ Saltar_Grid:
 
 
     Public Sub Haga_Leer_Items_New(ByVal Mostrar As Boolean, ByVal Refrescar As Boolean)
-
+        DevolverXml = True
         Dim fM As New fBusItems_Cargando
         If Mostrar Then
             If RealTime > 0 And Not Refrescar Then
@@ -1519,6 +1519,7 @@ Salte_Leer_Items:
                     'fM.Timer1.Start()
 
                 Catch ex As Exception
+                    DevolverXml = SiempreXml
                 End Try
             End If
 
@@ -1530,7 +1531,7 @@ Salte_Leer_Items:
         End Try
 
 
-
+        DevolverXml = SiempreXml
 
     End Sub
     Public Sub Mover_Tablas_Items(DsItem As DataSet)

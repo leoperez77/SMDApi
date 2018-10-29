@@ -41,7 +41,12 @@ Public Module Ppal_Datos
     Public PuertoPruebas As String = "62914" 'En modo local el api corre en un puerto específico
     Public urlApi As String = ""
     Public UsarApi As Boolean = True   'Se usará el servicio web existente por defecto
-    Public DevolverXml As Boolean = True 'Por defecto se devolverá JSON
+    Public DevolverXml As Boolean = False
+    Public SiempreXml As Boolean = False 'Por defecto se devolverá JSON
+    Public strToken As String 'Cadena que contiene el token sin serializar
+    Public Token As SMDApi.DTO.Token 'Objeto Token una vez serializado
+    Public ClaveUsuario As String
+    Public WebApi As ApiService
 #End Region
 
 #Region "Funciones WebApi"
@@ -67,7 +72,11 @@ Public Module Ppal_Datos
                 Next
             End If
             urlApi = host
-            Params.UrlApi = urlApi
+            WebApi = New ApiService(urlApi)
+            WebApi.Usuario = Usuario
+            WebApi.Clave = "123"
+            'Params.UrlApi = urlApi
+
         End If
     End Sub
 
@@ -375,6 +384,7 @@ Public Module Ppal_Datos
     End Function
     Public Function DMS_XML_Leer_DataSet(ByRef Ds As DataSet, ByVal NombreBaseXML As String, Optional ByVal Usu As Integer = -1) As Boolean
         If Usu = -1 Then Usu = Usuario
+
 
         If IO.File.Exists(NombreXML(NombreBaseXML & ".2", Usu)) Then
             'If Dir(NombreXML(NombreBaseXML & ".2")) <> "" Then 'si existe
@@ -903,10 +913,10 @@ Repita_IP:
                     .Type = 1
                 }
                 If Not DevolverXml Then
-                    Dim res = ApiService.PostSync(Of SMDApi.DTO.SqlCommand)("api", "ds", Command)
-                    Ds = ApiService.DeserializeDs(res.Result.ToString())
+                    Dim res = WebApi.PostSync(Of SMDApi.DTO.SqlCommand)("api", "ds", Command)
+                    Ds = WebApi.DeserializeDs(res.Result.ToString())
                 Else
-                    Ds = ApiService.PostSyncX(Of SMDApi.DTO.SqlCommand)("api", "dsx", Command)
+                    Ds = WebApi.PostSyncX(Of SMDApi.DTO.SqlCommand)("api", "dsx", Command)
                 End If
             Else
                 DemeNodo()
@@ -1060,10 +1070,10 @@ Repita_IP:
                     .Type = 1
                 }
             If Not DevolverXml Then
-                Dim res = ApiService.PostSync(Of SMDApi.DTO.SqlCommand)("api", "ds", Command)
-                Ds = ApiService.DeserializeDs(res.Result.ToString())
+                Dim res = WebApi.PostSync(Of SMDApi.DTO.SqlCommand)("api", "ds", Command)
+                Ds = WebApi.DeserializeDs(res.Result.ToString())
             Else
-                Ds = ApiService.PostSyncX(Of SMDApi.DTO.SqlCommand)("api", "dsx", Command)
+                Ds = WebApi.PostSyncX(Of SMDApi.DTO.SqlCommand)("api", "dsx", Command)
             End If
         Else
             DemeNodo()
@@ -1134,10 +1144,10 @@ Repita_IP:
                     .Type = 1
                 }
                 If Not DevolverXml Then
-                    Dim res = ApiService.PostSync(Of SMDApi.DTO.SqlCommand)("api", "ds", Command)
-                    Ds = ApiService.DeserializeDs(res.Result.ToString())
+                    Dim res = WebApi.PostSync(Of SMDApi.DTO.SqlCommand)("api", "ds", Command)
+                    Ds = WebApi.DeserializeDs(res.Result.ToString())
                 Else
-                    Ds = ApiService.PostSyncX(Of SMDApi.DTO.SqlCommand)("api", "dsx", Command)
+                    Ds = WebApi.PostSyncX(Of SMDApi.DTO.SqlCommand)("api", "dsx", Command)
                 End If
             Else
                 DemeNodo()
@@ -1192,7 +1202,7 @@ Repita_IP:
                 .Sql = TextoEjecutar,
                 .Type = 1
                 }
-                Dim res = ApiService.PostSync(Of SMDApi.DTO.SqlCommand)("api", "ex", Command)
+                Dim res = WebApi.PostSync(Of SMDApi.DTO.SqlCommand)("api", "ex", Command)
             Else
                 DemeNodo()
                 Ws.Exec2(Haga1(True, TextoEjecutar), Haga1(True, CodAplica2))
@@ -1201,7 +1211,7 @@ Repita_IP:
         End If
 
 
-            If SiMedirConsumo Then Grabar_Consumo(Len(TextoEjecutar))
+        If SiMedirConsumo Then Grabar_Consumo(Len(TextoEjecutar))
 
 
     End Sub
@@ -1273,7 +1283,7 @@ Repita_IP:
                     .Type = 1
                 }
 
-                Dim res = ApiService.PostSync(Of SMDApi.DTO.SqlCommand)("api", "ex", Command)
+                Dim res = WebApi.PostSync(Of SMDApi.DTO.SqlCommand)("api", "ex", Command)
             Else
                 DemeNodo()
                 Ws.ExecSp2(Haga1(True, NombreStoredProc), Haga1(True, CodAplica2), New String() {"", p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20})

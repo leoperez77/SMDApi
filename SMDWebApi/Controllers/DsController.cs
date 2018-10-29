@@ -14,6 +14,7 @@ namespace SMDWebApi.Controllers
 {
     public class DsController : ApiController
     {
+        //[Authorize]
         [Route("api/ds")]
         public HttpResponseMessage Post([FromBody]SqlCommand value)
         {
@@ -67,43 +68,6 @@ namespace SMDWebApi.Controllers
             return response;
         }
 
-        //[Route("api/ds")]
-        //public Response Post([FromBody]SqlCommand value)
-        //{
-        //    bool HayDtVacio = false;
-        //    var res = new Response();
-        //    try
-        //    {
-        //        var ds = DataHelper.GetDataset(value);
-
-        //        foreach (DataTable dt in ds.Tables)
-        //        {
-        //            if (dt.Rows.Count == 0)
-        //            {
-        //                HayDtVacio = true;
-        //                break;
-        //            }
-        //        }
-
-        //        if (!HayDtVacio)
-        //        {
-        //            res.Result = ds;
-        //        }
-        //        else
-        //        {
-        //            var obj = new DataSetSerializer();
-        //            res.Result = obj.Serialize(ds);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        res.IsSuccess = false;
-        //        res.Message = ex.Message;
-        //    }
-
-        //    res.IsSuccess = true;
-        //    res.Message = "";
-        //    return res;
-        //}
+        
     }
 }

@@ -48,18 +48,67 @@ namespace SMDWebApi.Clases
                     for (int j = 0; j < table.Columns.Count; j++)
                     {
                         if (j < table.Columns.Count - 1)
-                        {
-                            if(table.Rows[i].IsNull(j))
+                        {                            
+                            if (table.Rows[i].IsNull(j))
                                 JSONString.Append($@" ""{table.Columns[j].ColumnName.ToString()}"" : null ,");
                             else
-                                JSONString.Append($@" ""{table.Columns[j].ColumnName.ToString()}"" : {JsonConvert.ToString(table.Rows[i][j].ToString())} ," );
+                            {
+                                // Si es un número no poner comillas      
+                                TypeCode yourTypeCode = Type.GetTypeCode(table.Columns[j].DataType);
+                                switch (yourTypeCode)
+                                {
+                                    case TypeCode.Byte:
+                                    case TypeCode.SByte:
+                                    case TypeCode.Int16:
+                                    case TypeCode.UInt16:
+                                    case TypeCode.Int32:
+                                    case TypeCode.UInt32:
+                                    case TypeCode.Int64:
+                                    case TypeCode.UInt64:
+                                    case TypeCode.Single:
+                                    case TypeCode.Double:
+                                    case TypeCode.Decimal:
+                                        {
+                                            JSONString.Append($@" ""{table.Columns[j].ColumnName.ToString()}"" : {table.Rows[i][j].ToString()} ,");
+                                            break;
+                                        }
+                                    default:
+                                        JSONString.Append($@" ""{table.Columns[j].ColumnName.ToString()}"" : {JsonConvert.ToString(table.Rows[i][j].ToString())} ,");
+                                        break;
+                                }
+                            }
                         }
                         else if (j == table.Columns.Count - 1)
                         {
                             if (table.Rows[i].IsNull(j))
                                 JSONString.Append($@" ""{table.Columns[j].ColumnName.ToString()}"" : null ");
                             else
-                                JSONString.Append($@" ""{table.Columns[j].ColumnName.ToString()}"" : {JsonConvert.ToString(table.Rows[i][j].ToString())} ");
+                            {
+                                // Si es un número no poner comillas          
+                                TypeCode yourTypeCode = Type.GetTypeCode(table.Columns[j].DataType);
+                                switch (yourTypeCode)
+                                {
+                                    case TypeCode.Byte:
+                                    case TypeCode.SByte:
+                                    case TypeCode.Int16:
+                                    case TypeCode.UInt16:
+                                    case TypeCode.Int32:
+                                    case TypeCode.UInt32:
+                                    case TypeCode.Int64:
+                                    case TypeCode.UInt64:
+                                    case TypeCode.Single:
+                                    case TypeCode.Double:
+                                    case TypeCode.Decimal:
+                                        {
+                                            JSONString.Append($@" ""{table.Columns[j].ColumnName.ToString()}"" : {table.Rows[i][j].ToString()} ");
+                                            break;
+                                        }
+                                    default:
+                                        JSONString.Append($@" ""{table.Columns[j].ColumnName.ToString()}"" : {JsonConvert.ToString(table.Rows[i][j].ToString())} ");
+                                        break;
+                                }
+                                
+                            }
                         }
                     }
                     if (i == table.Rows.Count - 1)

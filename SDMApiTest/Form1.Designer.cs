@@ -34,6 +34,7 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Grid1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,8 +47,7 @@
             this.txtQuery.Name = "txtQuery";
             this.txtQuery.Size = new System.Drawing.Size(694, 76);
             this.txtQuery.TabIndex = 0;
-            this.txtQuery.Text = "exec Getimp_Basico 142\r\nexec Getimp_detalle 142\r\nexec Getimp_documentos_generados" +
-    " 142\r\nexec Getimp_eventos_orden 142";
+            this.txtQuery.Text = "exec Getimp_Basico 142";
             // 
             // Grid1
             // 
@@ -101,6 +101,16 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(93, 91);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Token";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AcceptButton = this.btnOk;
@@ -108,6 +118,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnSalir;
             this.ClientSize = new System.Drawing.Size(718, 573);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnSalir);
@@ -130,6 +141,7 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,27 @@ namespace SMDApi.Client
 {
     public class ApiService
     {
-        public static async Task<Response> Get<T>(string urlBase, string servicePrefix, string controller)
+        private readonly string _urlBase;
+        private Token token;
+        private string strToken;
+
+        public string UrlBase { get => _urlBase;}
+        public string Usuario;
+        public string Clave;
+
+        public ApiService(string Url)
+        {
+            _urlBase = Url;
+        }
+
+        public bool Login(string Usuario, string Clave)
+        {
+            this.Usuario = Usuario;
+            this.Clave = Clave;
+            return true;
+        }
+
+        public async Task<Response> Get<T>(string urlBase, string servicePrefix, string controller)
         {
             try
             {
@@ -50,26 +71,30 @@ namespace SMDApi.Client
             }
         }
 
-        public static async Task<Response> Post<T>(string servicePrefix, string controller, T model)
+        public async Task<Response> Post<T>(string servicePrefix, string controller, T model)
         {
             Response obj = new Response();
             try
             {
-                //Params.UrlService = @"http://localhost/trapi/";
 
                 HttpClient cons = new HttpClient();
                 cons.BaseAddress = new Uri(Params.UrlApi);
                 cons.DefaultRequestHeaders.Accept.Clear();
                 cons.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                //if (!string.IsNullOrWhiteSpace(token))
+                //{
+                //    var t = JsonConvert.DeserializeObject<Token>(token);
+                //    cons.DefaultRequestHeaders.Add("Authorization", "Bearer " + t.access_token);
+                //}
+
                 HttpResponseMessage res = await cons.PostAsJsonAsync(servicePrefix + "/" + controller, model);
 
                 if (res.IsSuccessStatusCode)
                 {
                     string content = await res.Content.ReadAsStringAsync();
                     var result = JsonConvert.DeserializeObject<Response>(content);
-                    return result;
-                    //obj.Result = content;
-                    //obj.
+                    return result;                    
                 }
                 else
                     return obj;
@@ -82,7 +107,7 @@ namespace SMDApi.Client
             }
         }
 
-        public static Response PostSync<T>(string servicePrefix, string controller, T model)
+        public Response PostSync<T>(string servicePrefix, string controller, T model)
         {
             Response obj = new Response();
             try
@@ -98,11 +123,8 @@ namespace SMDApi.Client
                 if (res.IsSuccessStatusCode)
                 {
                     var content = res.Content.ReadAsStringAsync().Result;
-                    //var content =  res.Content.ReadAsStringAsync().ConfigureAwait(false);
                     var result = JsonConvert.DeserializeObject<Response>(content);
                     return result;
-                    //obj.Result = content;
-                    //obj.
                 }
                 else
                     return obj;
@@ -115,16 +137,11 @@ namespace SMDApi.Client
             }
         }
 
-        public static DataSet PostSyncX<T>(string servicePrefix, string controller, T model)
+        public DataSet PostSyncX<T>(string servicePrefix, string controller, T model)
         {
             Response obj = new Response();
             try
             {
-                //Params.UrlService = @"http://localhost/trapi/";
-
-                //var url = "http://myserver/method";
-                //var parameters = new Dictionary<string, string> { { "param1", "1" }, { "param2", "2" } };
-                //var encodedContent = new FormUrlEncodedContent(parameters);
 
 
                 HttpClient client = new HttpClient
@@ -158,7 +175,7 @@ namespace SMDApi.Client
             }
         }
 
-        public static DataSet DeserializeDs(string json )
+        public DataSet DeserializeDs(string json)
         {
             var ds = JsonConvert.DeserializeObject<DataSet>(json);
             foreach (DataTable dt in ds.Tables)
@@ -181,6 +198,23 @@ namespace SMDApi.Client
             }
             ds.AcceptChanges();
             return ds;
+        }
+
+        private string GetToken(string url, string userName, string password)
+        {
+            var pairs = new List<KeyValuePair<string, string>>
+                    {
+                        new KeyValuePair<string, string>( "grant_type", "password" ),
+                        new KeyValuePair<string, string>( "username", userName ),
+                        new KeyValuePair<string, string> ( "Password", password )
+                    };
+            var content = new FormUrlEncodedContent(pairs);
+            ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+            using (var client = new HttpClient())
+            {
+                var response = client.PostAsync(url + "Token", content).Result;
+                return response.Content.ReadAsStringAsync().Result;
+            }
         }
 
         //public static async Task<string> Post<T>(string servicePrefix, string controller, T model)
