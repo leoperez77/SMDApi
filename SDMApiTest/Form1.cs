@@ -18,7 +18,7 @@ namespace SDMApiTest
     public partial class Form1 : Form
     {
         public string Token;
-        
+        public ApiService Api;
         public Form1()
         {
             InitializeComponent();
@@ -33,7 +33,8 @@ namespace SDMApiTest
         {
             Token = textBox1.Text;
             var Command = new SMDApi.DTO.SqlCommand() { Sql = txtQuery.Text, Type = 1 };
-            var res = await ApiService.Post<SMDApi.DTO.SqlCommand>("api", "ds", Command, Token);
+            
+            var res = await Api.Post<SMDApi.DTO.SqlCommand>("api", "ds", Command);
             DataSet ds = JsonConvert.DeserializeObject<DataSet>(res.Result.ToString());
 
             //var ds = Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteDataset("Data Source = localhost; Initial Catalog = dms_smd_nueva; Uid = sa; Pwd = Mutombo3000; ", CommandType.Text, txtQuery.Text);
@@ -145,6 +146,24 @@ namespace SDMApiTest
                 var response = client.PostAsync(url + "Token", content).Result;
                 return response.Content.ReadAsStringAsync().Result;
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Api = new ApiService("http://localhost:62914")
+            {
+                Usuario = "3990",
+                Clave = "124"
+            };
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SMDApi.DTO.DTOUsuario usuario = new SMDApi.DTO.DTOUsuario()
+            { Empresa="dms", Clave="leonardo", Nombre="leonardo_perez@hotmail.com" };
+
+            var id = Api.Login("api", "login", usuario);
+            textBox1.Text = id.ToString();
         }
     }
 }

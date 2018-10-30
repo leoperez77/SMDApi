@@ -9,11 +9,11 @@ using System.Net.Http;
 using System.Web.Http;
 
 namespace SMDWebApi.Controllers
-{
-
+{    
     public class DsxController : ApiController
     {
 
+        [Authorize]
         public SqlCommand Get(int id)
         {
             SqlCommand command = new SqlCommand()
@@ -25,42 +25,21 @@ namespace SMDWebApi.Controllers
             return command;
         }
 
+        [Authorize]
         [Route("api/ds")]
         public DataSet Post([FromBody]SqlCommand value)
-        {
-            //bool HayDtVacio = false;
+        {            
             var ds = new DataSet();
             try
             {
                 ds = DataHelper.GetDataset(value);
-
-                //foreach (DataTable dt in ds.Tables)
-                //{
-                //    if (dt.Rows.Count == 0)
-                //    {
-                //        HayDtVacio = true;
-                //        break;
-                //    }
-                //}
-
-                //if (!HayDtVacio)
-                //{
-                    //res.Result = ds;
-                //}
-                //else
-                //{
-                //    var obj = new DataSetSerializer();
-                //    res.Result = obj.Serialize(ds);
-                //}
             }
             catch (Exception ex)
             {
-                //res.IsSuccess = false;
-                //res.Message = ex.Message;
+                throw;
             }
 
-            //res.IsSuccess = true;
-            //res.Message = "";
+            
             return ds;
         }
     }

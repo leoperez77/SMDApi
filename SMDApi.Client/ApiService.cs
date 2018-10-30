@@ -27,11 +27,34 @@ namespace SMDApi.Client
             _urlBase = Url;
         }
 
-        public bool Login(string Usuario, string Clave)
+        public int Login(string servicePrefix, string controller, DTOUsuario _usuario)
         {
-            this.Usuario = Usuario;
-            this.Clave = Clave;
-            return true;
+            
+            try
+            {
+            
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(Params.UrlApi);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                
+                HttpResponseMessage res = client.PostAsJsonAsync(servicePrefix + "/" + controller, _usuario).Result;
+
+                if (res.IsSuccessStatusCode)
+                {
+                    var content = res.Content.ReadAsStringAsync().Result;
+                    var result = JsonConvert.DeserializeObject<int>(content);
+                    return result;
+                }
+                else
+                    return 0;
+
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         public async Task<Response> Get<T>(string urlBase, string servicePrefix, string controller)
@@ -81,20 +104,15 @@ namespace SMDApi.Client
                 cons.BaseAddress = new Uri(Params.UrlApi);
                 cons.DefaultRequestHeaders.Accept.Clear();
                 cons.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-
-                //if (!string.IsNullOrWhiteSpace(token))
-                //{
-                //    var t = JsonConvert.DeserializeObject<Token>(token);
-                //    cons.DefaultRequestHeaders.Add("Authorization", "Bearer " + t.access_token);
-                //}
-
+                ValidarToken();
+                cons.DefaultRequestHeaders.Add("Authorization", "Bearer " + this.token.access_token);
                 HttpResponseMessage res = await cons.PostAsJsonAsync(servicePrefix + "/" + controller, model);
 
                 if (res.IsSuccessStatusCode)
                 {
                     string content = await res.Content.ReadAsStringAsync();
                     var result = JsonConvert.DeserializeObject<Response>(content);
-                    return result;                    
+                    return result;
                 }
                 else
                     return obj;
@@ -105,6 +123,30 @@ namespace SMDApi.Client
             {
                 throw;
             }
+        }
+
+        private void ValidarToken()
+        {
+            if (this.token == null)
+            {
+                // Si no está en la cadena lo traigo
+                RenovarToken();
+            }
+            else
+            {
+                //No es null, ver si es válido
+                if (this.token.ExpireDate < DateTime.Now)
+                {
+                    RenovarToken();
+                }
+            }
+        }
+
+        private void RenovarToken()
+        {
+            strToken = GetToken(this.UrlBase, this.Usuario, this.Clave);
+            this.token = JsonConvert.DeserializeObject<Token>(strToken);
+            this.token.ExpireDate = DateTime.Now.AddMinutes(this.token.expires_in);
         }
 
         public Response PostSync<T>(string servicePrefix, string controller, T model)
@@ -118,6 +160,8 @@ namespace SMDApi.Client
                 client.BaseAddress = new Uri(Params.UrlApi);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                ValidarToken();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + this.token.access_token);
                 HttpResponseMessage res = client.PostAsJsonAsync(servicePrefix + "/" + controller, model).Result;
 
                 if (res.IsSuccessStatusCode)
@@ -150,6 +194,8 @@ namespace SMDApi.Client
                 };
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                ValidarToken();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + this.token.access_token);
                 HttpResponseMessage res = client.PostAsJsonAsync(servicePrefix + "/" + controller + "?type=xml", model).Result;
 
                 if (res.IsSuccessStatusCode)
@@ -212,7 +258,8 @@ namespace SMDApi.Client
             ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
             using (var client = new HttpClient())
             {
-                var response = client.PostAsync(url + "Token", content).Result;
+                client.BaseAddress = new Uri(url);
+                var response = client.PostAsync("/Token", content).Result;
                 return response.Content.ReadAsStringAsync().Result;
             }
         }

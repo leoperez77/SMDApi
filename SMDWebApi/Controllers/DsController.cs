@@ -14,7 +14,7 @@ namespace SMDWebApi.Controllers
 {
     public class DsController : ApiController
     {
-        //[Authorize]
+        [Authorize]
         [Route("api/ds")]
         public HttpResponseMessage Post([FromBody]SqlCommand value)
         {

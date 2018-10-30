@@ -11,6 +11,7 @@ namespace SMDWebApi.Controllers
 {
     public class ExController : ApiController
     {
+        [Authorize]
         [Route("api/ex")]
         public Response Post([FromBody]SqlCommand value)
         {

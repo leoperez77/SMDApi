@@ -16,5 +16,7 @@ namespace SMDApi.DTO
         public string issued { get; set; }
         [JsonProperty(".expires")]
         public string expires { get; set; }        
+        [JsonIgnore]
+        public DateTime ExpireDate { get; set; }
     }
 }
