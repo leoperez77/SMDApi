@@ -24,7 +24,7 @@ namespace SMDApi.Client
 
         public ApiService(string Url)
         {
-            _urlBase = Url;
+            _urlBase = Url + "/";
         }
 
         public int Login(string servicePrefix, string controller, DTOUsuario _usuario)
@@ -34,7 +34,7 @@ namespace SMDApi.Client
             {
             
                 HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri(Params.UrlApi);
+                client.BaseAddress = new Uri(this.UrlBase);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                 
@@ -101,7 +101,7 @@ namespace SMDApi.Client
             {
 
                 HttpClient cons = new HttpClient();
-                cons.BaseAddress = new Uri(Params.UrlApi);
+                cons.BaseAddress = new Uri(this.UrlBase);
                 cons.DefaultRequestHeaders.Accept.Clear();
                 cons.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                 ValidarToken();
@@ -157,7 +157,7 @@ namespace SMDApi.Client
                 //Params.UrlService = @"http://localhost/trapi/";
 
                 HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri(Params.UrlApi);
+                client.BaseAddress = new Uri(this.UrlBase );
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                 ValidarToken();
@@ -190,7 +190,7 @@ namespace SMDApi.Client
 
                 HttpClient client = new HttpClient
                 {
-                    BaseAddress = new Uri(Params.UrlApi)
+                    BaseAddress = new Uri(this.UrlBase )
                 };
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
@@ -258,8 +258,8 @@ namespace SMDApi.Client
             ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(url);
-                var response = client.PostAsync("/Token", content).Result;
+                client.BaseAddress = new Uri(@url );
+                var response = client.PostAsync("Token", content).Result;
                 return response.Content.ReadAsStringAsync().Result;
             }
         }

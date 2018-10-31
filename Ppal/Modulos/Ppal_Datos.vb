@@ -38,7 +38,7 @@ Public Module Ppal_Datos
 
 #Region "Variables acceso WebApi"
 
-    Public PuertoPruebas As String = "62914" 'En modo local el api corre en un puerto específico
+    Public PuertoPruebas As String = "" 'En modo local depurando el api corre en un puerto específico
     Public urlApi As String = ""
     Public UsarApi As Boolean = True   'Se usará el servicio web existente por defecto
     Public DevolverXml As Boolean = False
@@ -63,8 +63,10 @@ Public Module Ppal_Datos
                         cuantos = cuantos + 1
                         If (cuantos = 3) Then
                             host = url.Substring(0, index)
-                            If (PuertoPruebas <> "") Then
+                            If (PuertoPruebas <> "" And host.IndexOf("localhost") > 0) Then
                                 host = host + ":" + PuertoPruebas
+                            Else
+                                host = host + "/smdapi"
                             End If
                             Exit For
                         End If
@@ -1140,7 +1142,7 @@ Repita_IP:
                 End If
 
                 Dim Command = New SMDApi.DTO.SqlCommand() With {
-                    .Sql = SQL,
+                    .Sql = mSql,
                     .Type = 1
                 }
                 If Not DevolverXml Then
